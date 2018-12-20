@@ -23,12 +23,12 @@ const (
 )
 
 var (
-	// Function used to terminate the CLI
+	// Function used to terminate the CLI 终止函数
 	terminate = os.Exit
-	// Function used to redirect output to
+	// Function used to redirect output to 输出重定向
 	outWriter io.Writer = os.Stderr
 
-	// CLI arguments
+	// CLI arguments CLI参数
 	mspID                                     *string
 	tlsCA, tlsCert, tlsKey, userKey, userCert **os.File
 	configFile                                *string
