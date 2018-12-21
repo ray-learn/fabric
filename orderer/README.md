@@ -1,18 +1,18 @@
-# Hyperledger Fabric Ordering Service
+# Hyperledger Fabric Ordering Service 超级账本Orderer Service
 
-The Hyperledger Fabric ordering service provides an atomic broadcast ordering service for consumption by the peers. This means that many clients can submit messages to the ordering service, and the same sequence of ordered batches will be delivered to all clients in response.
+The Hyperledger Fabric ordering service provides an atomic broadcast ordering service for consumption by the peers. This means that many clients can submit messages to the ordering service, and the same sequence of ordered batches will be delivered to all clients in response. 超级账本ordering service为节点的使用提供原子性广播排序服务。多客户端可以提交消息给ordering service，然后相同顺序的排序将被回传给所有客户端。
 
-## Protocol definition
+## Protocol definition 协议定义
 
-The atomic broadcast ordering protocol for Hyperledger Fabric is described in `hyperledger/fabric/protos/orderer/ab.proto`. There are two services: the `Broadcast` service for injecting messages into the system and the `Deliver` service for receiving ordered batches from the service.
+The atomic broadcast ordering protocol for Hyperledger Fabric is described in `hyperledger/fabric/protos/orderer/ab.proto`. There are two services: the `Broadcast` service for injecting messages into the system and the `Deliver` service for receiving ordered batches from the service. 原子广播排序协议，两个服务：用于向系统提交消息的广播服务和从服务获取排序的传送服务
 
-## Service types
+## Service types 服务类型
 
 * Solo ordering service (testing): The solo ordering service is intended to be an extremely easy to deploy, non-production ordering service. It consists of a single process which serves all clients, so consensus is not required as there is a single central authority.  There is correspondingly no high availability or scalability. This makes solo ideal for development and testing, but not for deployment.
 * Kafka-based ordering service (production): The Kafka-based ordering service leverages the Kafka pub/sub system to perform the ordering, but wraps this in the familiar `ab.proto` definition so that the peer orderer client code does not to be written specifically for Kafka. Kafka is currently the preferred choice for production deployments which demand high throughput and high availability, but do not require byzantine fault tolerance.
 * PBFT ordering service (pending): The PBFT ordering service will use the Hyperledger Fabric PBFT implementation (currently under development) to order messages in a byzantine fault tolerant way.
 
-### Choosing a service type
+### Choosing a service type 选择服务类型
 
 In order to set a service type, the ordering service administrator needs to set the right value in the genesis block that the ordering service nodes will be bootstrapped from.
 
