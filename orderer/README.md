@@ -24,7 +24,7 @@ For details on the configuration structure of channels, refer to the [Channel Co
 
 The location of this block can be set using the `ORDERER_GENERAL_GENESISFILE` environment variable. As is the case with all the configuration paths for Fabric binaries, this location is relative to the path set via the `FABRIC_CFG_PATH` environment variable.
 
-## Ledger types
+## Ledger types 账本类型
 
 Because the ordering service must allow clients to seek within the ordered batch stream, orderers need a backing ledger, where they maintain a local copy of past batches. Not all ledgers are crash fault tolerant, so care should be used when selecting a ledger for an application. Because the orderer ledger interface is abstracted, the ledger type for a particular orderer may be selected at runtime. The following options are available:
 
@@ -32,7 +32,7 @@ Because the ordering service must allow clients to seek within the ordered batch
 * RAM ledger (testing): The RAM ledger implementation is a simple development oriented ledger which stores batches purely in memory, with a configurable history size for retention. This ledger is not crash fault tolerant; restarting the process will reset the ledger to the genesis block.
 * JSON ledger (testing): The file ledger implementation is a simple development oriented ledger which stores batches as JSON encoded files on the filesystem.  This is intended to make inspecting the ledger easy and to allow for crash fault tolerance. This ledger is not intended to be performant, but is intended to be simple and easy to deploy and understand.
 
-### Choosing a ledger type
+### Choosing a ledger type 选择账本类型
 
 This can be set by setting the `ORDERER_GENERAL_LEDGERTYPE` environment variable before executing the `orderer` binary. Acceptable values are `file` (default), `ram`, and `json`.
 

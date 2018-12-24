@@ -44,7 +44,7 @@ const pkgLogID = "orderer/common/server"
 
 var logger = flogging.MustGetLogger(pkgLogID)
 
-//command line flags
+//command line flags 命令行标志
 var (
 	app = kingpin.New("orderer", "Hyperledger Fabric orderer node")
 
@@ -53,7 +53,7 @@ var (
 	benchmark = app.Command("benchmark", "Run orderer in benchmark mode")
 )
 
-// Main is the entry point of orderer process
+// Main is the entry point of orderer process orderer程序的入口
 func Main() {
 	fullCmd := kingpin.MustParse(app.Parse(os.Args[1:]))
 
