@@ -15,10 +15,12 @@ import (
 
 // Chaincode interface must be implemented by all chaincodes. The fabric runs
 // the transactions by calling these functions as specified.
+// 链码接口，fabric通过调用这些函数执行交易
 type Chaincode interface {
 	// Init is called during Instantiate transaction after the chaincode container
 	// has been established for the first time, allowing the chaincode to
 	// initialize its internal data
+	// 在实例化交易过程中进行链码的初始化
 	Init(stub ChaincodeStubInterface) pb.Response
 
 	// Invoke is called to update or query the ledger in a proposal transaction.
